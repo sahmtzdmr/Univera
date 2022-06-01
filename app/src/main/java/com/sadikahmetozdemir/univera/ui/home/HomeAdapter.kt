@@ -3,12 +3,12 @@ package com.sadikahmetozdemir.univera.ui.home
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.sadikahmetozdemir.univera.core.shared.remote.AlbumResponseModel
 import com.sadikahmetozdemir.univera.core.shared.remote.AlbumResponseModelItem
 import com.sadikahmetozdemir.univera.databinding.CustomAlbumItemBinding
 
-class HomeAdapter(private var albumList: ArrayList<AlbumResponseModel>) :
+class HomeAdapter(private var albumList: List<AlbumResponseModelItem>) :
     RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
+    var itemClicked: ((AlbumResponseModelItem) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
@@ -19,7 +19,7 @@ class HomeAdapter(private var albumList: ArrayList<AlbumResponseModel>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val album = albumList.get(position)
         album.let {
-            holder.bind(it.get(0))
+            holder.bind(it)
         }
     }
 
@@ -29,19 +29,19 @@ class HomeAdapter(private var albumList: ArrayList<AlbumResponseModel>) :
 
     inner class ViewHolder(val binding: CustomAlbumItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-//        init {
-//            binding.apply {
-//                tvDescription.setOnClickListener {
-//                    if (bindingAdapterPosition != RecyclerView.NO_POSITION) {
-//                        val currentItem = albumList.get(bindingAdapterPosition)
-//                        currentItem.let {
-//                            itemClicked?.invoke(it)
-//                        }
-//                    }
-//                }
-//
-//            }
-//        }
+        init {
+            binding.apply {
+                tvDescription.setOnClickListener {
+                    if (bindingAdapterPosition != RecyclerView.NO_POSITION) {
+                        val currentItem = albumList.get(bindingAdapterPosition)
+                        currentItem.let {
+                            itemClicked?.invoke(it)
+                        }
+                    }
+                }
+
+            }
+        }
 
         fun bind(item: AlbumResponseModelItem) {
             binding.apply {
