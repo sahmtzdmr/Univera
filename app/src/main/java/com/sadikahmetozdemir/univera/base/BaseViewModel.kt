@@ -3,7 +3,7 @@ package com.sadikahmetozdemir.univera.base
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavDirections
-import com.sadikahmetozdemir.univera.core.shared.SimpleHttpException
+import com.sadikahmetozdemir.univera.core.shared.exceptions.SimpleHttpException
 import com.sadikahmetozdemir.univera.utils.SingleLiveEvent
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
