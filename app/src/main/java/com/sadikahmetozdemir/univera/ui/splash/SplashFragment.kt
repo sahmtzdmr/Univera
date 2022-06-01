@@ -1,0 +1,9 @@
+package com.sadikahmetozdemir.univera.ui.splash
+
+import com.sadikahmetozdemir.univera.R
+import com.sadikahmetozdemir.univera.base.BaseFragment
+import com.sadikahmetozdemir.univera.databinding.FragmentSplashBinding
+
+class SplashFragment :
+    BaseFragment<FragmentSplashBinding, SplashViewModel>(R.layout.fragment_splash) {
+}
