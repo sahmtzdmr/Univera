@@ -17,9 +17,10 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="4"
-            android:text="description"
+            android:text="@string/title"
             app:layout_constraintBottom_toTopOf="@id/view_divider"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.100"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.sadikahmetozdemir.univera.core.shared.remote.AlbumPhotosModelItem
 import com.sadikahmetozdemir.univera.databinding.CustomPhotosItemBinding
+import com.sadikahmetozdemir.univera.utils.extensions.load
 
 class HomeDetailAdapter(private var photoList: List<AlbumPhotosModelItem>) :
     RecyclerView.Adapter<HomeDetailAdapter.ViewHolder>() {
@@ -44,6 +45,9 @@ class HomeDetailAdapter(private var photoList: List<AlbumPhotosModelItem>) :
 
         fun bind(item: AlbumPhotosModelItem) {
             binding.apply {
+                ivAlbum.load(url = item.url)
+                tvTitle.text = item.title
+
 
             }
         }

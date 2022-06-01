@@ -27,7 +27,7 @@ class HomeViewModel @Inject constructor(private var defaultRepository: DefaultRe
         )
     }
 
-    fun toDetail() {
-        navigate(HomeFragmentDirections.actionHomeFragmentToHomeDetailFragment())
+    fun toDetail(albumID: Int) {
+        navigate(HomeFragmentDirections.actionHomeFragmentToHomeDetailFragment(albumID))
     }
 }

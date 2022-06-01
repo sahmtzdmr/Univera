@@ -8,7 +8,7 @@ import com.sadikahmetozdemir.univera.databinding.CustomAlbumItemBinding
 
 class HomeAdapter(private var albumList: List<AlbumResponseModelItem>) :
     RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
-    var itemClicked: ((AlbumResponseModelItem) -> Unit)? = null
+    var itemClicked: ((Int) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
@@ -35,7 +35,7 @@ class HomeAdapter(private var albumList: List<AlbumResponseModelItem>) :
                     if (bindingAdapterPosition != RecyclerView.NO_POSITION) {
                         val currentItem = albumList.get(bindingAdapterPosition)
                         currentItem.let {
-                            itemClicked?.invoke(it)
+                            it.id?.let { it1 -> itemClicked?.invoke(it1) }
                         }
                     }
                 }
@@ -45,7 +45,7 @@ class HomeAdapter(private var albumList: List<AlbumResponseModelItem>) :
 
         fun bind(item: AlbumResponseModelItem) {
             binding.apply {
-                tvDescription.text = item.title
+                tvDescription.text = item.title?.trim()
             }
         }
     }

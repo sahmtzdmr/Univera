@@ -19,12 +19,13 @@
     <fragment
         android:id="@+id/homeDetailFragment"
         android:name="com.sadikahmetozdemir.univera.ui.detail.HomeDetailFragment"
-        android:label="HomeDetailFragment" />
-    <argument
-        android:name="albumID"
-        app:argType="integer"
-        app:nullable="true">
+        android:label="HomeDetailFragment">
+        <argument
+            android:name="albumID"
+            app:argType="integer">
+        </argument>
 
-    </argument>
+    </fragment>
+
 
 </navigation>
