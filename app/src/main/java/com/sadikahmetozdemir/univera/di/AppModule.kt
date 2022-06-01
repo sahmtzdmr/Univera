@@ -1,12 +1,15 @@
 package com.sadikahmetozdemir.univera.di
 
+import android.content.Context
 import com.sadikahmetozdemir.univera.core.repository.DefaultRepository
 import com.sadikahmetozdemir.univera.core.shared.service.AlbumAPI
 import com.sadikahmetozdemir.univera.core.utils.NetworkInterceptor
 import com.sadikahmetozdemir.univera.utils.Constants
+import com.sadikahmetozdemir.univera.utils.DataHelperManager
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -37,6 +40,11 @@ object AppModule {
         albumAPI: AlbumAPI
     ): DefaultRepository {
         return DefaultRepository(albumAPI)
+    }
+    @Singleton
+    @Provides
+    fun provideDataManager(@ApplicationContext context: Context): DataHelperManager {
+        return DataHelperManager(context)
     }
 
     @Provides

@@ -28,7 +28,9 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/divider"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_description"
             tools:layout_editor_absoluteY="182dp" />
 
 
