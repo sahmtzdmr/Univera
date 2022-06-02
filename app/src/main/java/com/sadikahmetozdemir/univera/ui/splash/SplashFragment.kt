@@ -18,7 +18,7 @@ class SplashFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         lifecycleScope.launch(Dispatchers.Main) {
-            delay(1000)
+            delay(1500)
             findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToLoginFragment())
 
         }
