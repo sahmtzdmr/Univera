@@ -3,7 +3,6 @@ package com.sadikahmetozdemir.univera.utils
 
 import android.content.Context
 import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
@@ -20,43 +19,37 @@ class DataHelperManager @Inject constructor(private val context: Context) {
         }
     }
 
-    suspend fun removeToken() {
-        context.dataStore.edit {
-            it.remove(TOKEN)
-        }
-    }
-
     suspend fun getToken(): String = context.dataStore.data.map {
         it[TOKEN] ?: ""
     }.first()
 
-    suspend fun firstAttach() {
+    suspend fun getUsername(): String = context.dataStore.data.map {
+        it[USERNAME] ?: ""
+    }.first()
+
+    suspend fun getPassword(): String = context.dataStore.data.map {
+        it[PASSWORD] ?: ""
+    }.first()
+
+    suspend fun saveUsername(username: String) {
         context.dataStore.edit {
-            it[ATTACH] = false
+            it[USERNAME] = username
         }
     }
 
-    suspend fun isFirstAttach(): Boolean = context.dataStore.data.map {
-        it[ATTACH] ?: true
-    }.first()
-
-    suspend fun saveID(id: Int) {
+    suspend fun savePassword(password: String) {
         context.dataStore.edit {
-            it[ID] = id
+            it[PASSWORD] = password
         }
 
     }
-
-    suspend fun getID(): Int = context.dataStore.data.map {
-        it[ID] ?: 0
-    }.first()
 
     suspend fun isLogin(): Boolean = getToken().isNotBlank()
 
 
     companion object {
-        private val ID = intPreferencesKey("id")
-        private val ATTACH = booleanPreferencesKey("attach")
+        private val PASSWORD = stringPreferencesKey("password")
+        private val USERNAME = stringPreferencesKey("username")
         private val TOKEN = stringPreferencesKey("token")
         val Context.dataStore: DataStore<androidx.datastore.preferences.core.Preferences> by preferencesDataStore(
             "Data")

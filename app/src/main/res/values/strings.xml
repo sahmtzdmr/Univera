@@ -6,8 +6,12 @@
     <string name="name">Adı ve Soyadı</string>
     <string name="email">Email Adresi</string>
     <string name="age">Yaş</string>
-    <string name="sign_check">Zaten Üye misiniz?</string>
+    <string name="sign_check">Üyeliğiniz yok mu?</string>
+    <string name="sign">Zaten üye misiniz?</string>
     <string name="sign_in">Giriş Yap</string>
     <string name="text_action">Tamam</string>
     <string name="title">title</string>
+    <string name="password">Şifre</string>
+    <string name="forgot_password">Şifrenizi mi unuttunuz?</string>
+    <string name="username">Kullanıcı Adı</string>
 </resources>
