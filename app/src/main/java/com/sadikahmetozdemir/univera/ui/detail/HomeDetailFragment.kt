@@ -12,14 +12,17 @@ class HomeDetailFragment :
     BaseFragment<FragmentHomeDetailBinding, HomeDetailViewModel>(R.layout.fragment_home_detail) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         lateinit var homeDetailAdapter: HomeDetailAdapter
-
         super.onViewCreated(view, savedInstanceState)
+
         viewModel.albumId?.let { viewModel.getPhotos(it) }
         viewModel.photos.observe(viewLifecycleOwner) {
             homeDetailAdapter = HomeDetailAdapter(it)
             binding.recyclerView.apply {
                 setHasFixedSize(true)
                 adapter = homeDetailAdapter
+            }
+            homeDetailAdapter.itemClicked = {
+                viewModel.toComments(it)
             }
 
         }

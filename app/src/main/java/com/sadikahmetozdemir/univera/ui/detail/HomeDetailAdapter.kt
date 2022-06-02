@@ -9,6 +9,7 @@ import com.sadikahmetozdemir.univera.utils.extensions.load
 
 class HomeDetailAdapter(private var photoList: List<AlbumPhotosModelItem>) :
     RecyclerView.Adapter<HomeDetailAdapter.ViewHolder>() {
+    var itemClicked: ((Int) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
@@ -29,19 +30,19 @@ class HomeDetailAdapter(private var photoList: List<AlbumPhotosModelItem>) :
 
     inner class ViewHolder(val binding: CustomPhotosItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-//        init {
-//            binding.apply {
-//                tvDescription.setOnClickListener {
-//                    if (bindingAdapterPosition != RecyclerView.NO_POSITION) {
-//                        val currentItem = photoList.get(bindingAdapterPosition)
-//                        currentItem.let {
-//                            itemClicked?.invoke(it)
-//                        }
-//                    }
-//                }
-//
-//            }
-//        }
+        init {
+            binding.apply {
+                tvTitle.setOnClickListener {
+                    if (bindingAdapterPosition != RecyclerView.NO_POSITION) {
+                        val currentItem = photoList.get(bindingAdapterPosition)
+                        currentItem.let {
+                            it.id?.let { it1 -> itemClicked?.invoke(it1) }
+                        }
+                    }
+                }
+
+            }
+        }
 
         fun bind(item: AlbumPhotosModelItem) {
             binding.apply {

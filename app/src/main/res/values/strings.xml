@@ -16,4 +16,6 @@
     <string name="username">Kullanıcı Adı</string>
     <string name="univera">UNIVERA</string>
     <string name="body">body</string>
+    <string name="permission">Internet izni vermeniz gerekmektedir</string>
+    <string name="give_permission">İzin ver</string>
 </resources>
